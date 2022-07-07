@@ -28,8 +28,3 @@ const getCity = async (city) => {
     return data[0];       // returns the closest match 
 };
 
-getCity('manchester').then(data => {
-        return getWeather(data.Key);
-    }).then(data => console.log(data))
-    .catch(error => console.log(error))
-
