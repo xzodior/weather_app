@@ -26,5 +26,6 @@ const getCity = async (city) => {
 
 
     return data[0];       // returns the closest match 
+    
 };
 
