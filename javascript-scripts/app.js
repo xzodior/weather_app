@@ -3,11 +3,12 @@
 const cityForm = document.querySelector('form');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
+const time = document.querySelector('img.time');
+const icon = document.querySelector('.icon img');
 
-const updateUI = (data) => {
-
-    const cityDets = data.cityDets;
-    const weather = data.weather;
+function updateUI(data) {
+    // destructure properties from an object (data)
+    const { cityDets, weather } = data;
 
     // update details template
     details.innerHTML = `
@@ -16,10 +17,18 @@ const updateUI = (data) => {
     <div class="display-4 my-4">
         <span>${weather.Temperature.Metric.Value}</span>
         <span>&deg;C</span>
-    </div>`
+    </div>`;
+
+    // update night/day & icon images
+    const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc)
+
+    let timeSrc = null;
+    const result = (weather.IsDayTime) ? timeSrc = 'img/day.svg' : timeSrc = 'img/night.svg';
+    time.setAttribute('src', result);
 
     // remove d-none class if present
-    if (card.classList.contains('d-none')){
+    if (card.classList.contains('d-none')) {
         card.classList.remove('d-none');
     }
 
