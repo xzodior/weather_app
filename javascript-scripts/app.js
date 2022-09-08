@@ -54,14 +54,14 @@ cityForm.addEventListener('submit', event => {
     // update UI with new city 
     updateCity(city)
         .then(data => updateUI(data))
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
 
     // set local storage
     localStorage.setItem('city', city);
 })
 
-if (localStorage.getItem('city')){
+if (localStorage.getItem('city')){      // condition checks if the key has a value
     updateCity(localStorage.getItem('city'))
         .then(data => updateUI(data))
-        .catch(error => console.log(error))
+        .catch(error => alert(error))
 }

@@ -1,6 +1,18 @@
-// interactions with the weather API and retrieving data 
+class Forecast{
+    constructor(){
+        this.key = '7WkLIxAG6484EEnjXb1Ra8qwtaldH0DD';
+        this.weatherURI = 'http://dataservice.accuweather.com/currentconditions/v1/';
+        this.cityURI = 'http://dataservice.accuweather.com/locations/v1/cities/search';
+    }
+    async updateCity(city){
+        const cityDets = await this.getCity(city);
+        const weather = await this.getWeather(cityDets.Key);
 
-const key = 'BVOd74DWGXlX7m6t60D489OFZtxxBa8F';
+        return {cityDets, weather};
+    }
+}
+
+const key = '7WkLIxAG6484EEnjXb1Ra8qwtaldH0DD';
 
 // get weather information
 const getWeather = async(id) => {
